@@ -63,10 +63,6 @@ nav ul li a:hover {
     color: #ff9800; /* Matches the underline color */
 }
 
-/* Main Content Section Styling */
-main {
-    padding-top: 100px; /* Add top padding to compensate for the fixed header */
-}
 
 section {
     padding: 50px;
@@ -80,9 +76,6 @@ section {
     min-height: 100vh; /* Ensures each section takes at least the full height of the viewport */
 }
 
-#about {
-    padding-top: 160px !important;
-}
 
 section:nth-child(even) {
     background: #ddd;
