@@ -11,41 +11,50 @@ $(document).ready(function () {
         if ($(target).length) {
             var $target = $(target);
 
-            // Get target scroll position instantly
+            // Calculate target scroll position
             var scrollto = $target.offset().top - headerHeight;
 
-            // Check if we are already at the target position
-            if ($(window).scrollTop() !== scrollto) {
-                // Stop any active animation *only if scrolling is happening*
-                if ($('html, body').is(':animated')) {
-                    $('html, body').stop();
-                }
+            // Stop ongoing animations if necessary
+            $('html, body').stop();
 
-                // Perform smooth scrolling
-                $('html, body').animate({
-                    scrollTop: scrollto
-                }, 500, 'easeInOutCubic'); // Reduced duration for snappier feel
+            // Perform smooth scrolling
+            $('html, body').animate({
+                scrollTop: scrollto
+            }, 500, 'easeInOutCubic');
 
-                // Replace hash without affecting scroll position
-                history.replaceState(null, null, window.location.pathname + window.location.search);
-            }
+            // Replace hash in URL without affecting scroll position
+            history.replaceState(null, null, window.location.pathname + window.location.search);
         }
     });
 
-    // Function to highlight active section in navbar
+    // Function to highlight the active section
     function highlightActiveSection() {
         var scrollPosition = $(window).scrollTop() + headerHeight + 10; // Adjust for offset
+        var windowHeight = $(window).height(); // Get viewport height
+
+        var currentSection = null;
+        var maxVisible = 0;
 
         $('section').each(function () {
             var sectionTop = $(this).offset().top;
             var sectionBottom = sectionTop + $(this).outerHeight();
 
-            if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                var sectionId = $(this).attr('id');
-                $('nav ul li a').removeClass('active'); // Remove from all
-                $('nav ul li a[href="#' + sectionId + '"]').addClass('active'); // Add to current
+            // Calculate how much of the section is visible in the viewport
+            var visibleHeight = Math.min(sectionBottom, scrollPosition + windowHeight) - Math.max(sectionTop, scrollPosition);
+            
+            // If at least 50% of the section is visible, consider it the active one
+            if (visibleHeight > maxVisible && visibleHeight > $(this).outerHeight() * 0.5) {
+                maxVisible = visibleHeight;
+                currentSection = $(this);
             }
         });
+
+        // Update nav links
+        if (currentSection) {
+            var sectionId = currentSection.attr('id');
+            $('nav ul li a').removeClass('active'); // Remove from all
+            $('nav ul li a[href="#' + sectionId + '"]').addClass('active'); // Add to current
+        }
     }
 
     // Call function on scroll
