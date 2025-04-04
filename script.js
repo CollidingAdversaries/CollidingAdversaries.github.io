@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Smooth scrolling behavior
+    // Smooth scrolling behavior with adjusted section positioning
     navLinks.forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -45,9 +45,12 @@ document.addEventListener("DOMContentLoaded", () => {
             const targetHeight = targetElement.offsetHeight;
             const targetCenter = targetTop + targetHeight / 2 - window.innerHeight / 2;
 
+            // Adjust for cases where the next section is very short
+            const adjustedScrollPosition = Math.min(targetCenter, document.body.scrollHeight - window.innerHeight);
+
             // Smoothly scroll to the target center
             window.scrollTo({
-                top: targetCenter,
+                top: adjustedScrollPosition,
                 behavior: 'smooth'
             });
 
