@@ -1,22 +1,26 @@
 $(document).ready(function () {
-    // No need for the smooth scroll handling anymore
+    var $header = $('#header');
+    var headerHeight = $header.outerHeight(); // Get the header height
+    console.log("Header Height: ", headerHeight);
 
-    // You can still use the 'active' class handling based on scroll position
-    $(window).on('scroll', function () {
-        var cur_pos = $(this).scrollTop() + 10; // Slight offset for smoother tracking
+    // Smooth scrolling for navigation menu links
+    $('a.scrollto').on('click', function (e) {
+        var target = this.hash;
+        console.log("Hash Target: ", target); // Log the target (e.g., #about)
 
-        $('section').each(function () {
-            var top = $(this).offset().top - $('header').outerHeight(),
-                bottom = top + $(this).outerHeight();
+        if ($(target).length) {
+            e.preventDefault(); // Prevent default anchor behavior
 
-            // Check if current scroll position is within the section
-            if (cur_pos >= top && cur_pos <= bottom) {
-                // Remove active class from all nav items
-                $('.nav-menu li').removeClass('active');
+            // Calculate scroll position considering the header height
+            var scrollto = $(target).offset().top - headerHeight; // Subtract header height from scroll position
+            console.log("Scroll To: ", scrollto); // Log the scroll position
 
-                // Add active class to the corresponding nav item
-                $('.nav-menu a[href="#' + $(this).attr('id') + '"]').parent('li').addClass('active');
-            }
-        });
+            // Smooth scroll to the target position
+            $('html, body').animate({
+                scrollTop: scrollto
+            }, 1500, 'easeInOutExpo');
+        } else {
+            console.log("Target element not found: ", target);
+        }
     });
 });
