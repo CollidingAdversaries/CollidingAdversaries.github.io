@@ -27,13 +27,13 @@ $(document).ready(function () {
 
     // Close mobile menu when clicking a link inside it
     $('.mobile-nav a').on('click', function () {
-        $('.mobile-nav').removeClass('active');
+        $('.mobile-nav').removeClass('active'); // Close the menu
     });
 
     // Close menu if clicking outside of it
     $(document).on('click', function (event) {
         if (!$('.hamburger').is(event.target) && !$('.mobile-nav').is(event.target) && $('.mobile-nav').has(event.target).length === 0) {
-            $('.mobile-nav').removeClass('active');
+            $('.mobile-nav').removeClass('active'); // Close menu if clicking outside
         }
     });
 
