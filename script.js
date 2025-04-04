@@ -1,52 +1,50 @@
 $(document).ready(function () {
-    var headerHeight = $('#header').outerHeight() || 0; // Cache header height
-    var prevScrollPos = window.pageYOffset; // Track the scroll position for hiding the header on scroll
+    var headerHeight = $('#header').outerHeight() || 0; 
+    var prevScrollPos = window.pageYOffset; 
 
-    // Disable built-in CSS smooth scrolling to prevent conflicts
     $('html').css('scroll-behavior', 'auto');
 
-    // Scroll to section
     $('a.scrollto').on('click', function (e) {
-        e.preventDefault(); // Prevent default jump behavior
+        e.preventDefault(); 
         var target = this.hash;
         if ($(target).length) {
             var $target = $(target);
             var scrollto = $target.offset().top - headerHeight;
-            $('html, body').stop();
-            $('html, body').animate({
+            $('html, body').stop().animate({
                 scrollTop: scrollto
             }, 500, 'easeInOutCubic');
             history.replaceState(null, null, window.location.pathname + window.location.search);
         }
     });
 
-    // Mobile menu toggle (Hamburger Menu)
+    // Hamburger Menu Toggle
     $('.hamburger').on('click', function (e) {
-        e.stopPropagation(); // Prevent propagation to document click (so menu doesn't close)
-        $('.mobile-nav').toggleClass('active'); // Show or hide the mobile menu
+        e.stopPropagation(); 
+        $('.mobile-nav').toggleClass('active'); 
+        $('body').toggleClass('no-scroll'); // Disable scrolling when menu is open
     });
 
-    // Close mobile menu when clicking a link inside it
+    // Close Mobile Menu When Clicking a Link Inside It
     $('.mobile-nav a').on('click', function () {
         $('.mobile-nav').removeClass('active');
+        $('body').removeClass('no-scroll'); // Re-enable scrolling when menu closes
     });
 
-    // Close menu if clicking outside of it
+    // Close Menu If Clicking Outside of It
     $(document).on('click', function (event) {
         if (!$('.hamburger').is(event.target) && !$('.mobile-nav').is(event.target) && $('.mobile-nav').has(event.target).length === 0) {
             $('.mobile-nav').removeClass('active');
+            $('body').removeClass('no-scroll'); // Ensure scrolling is re-enabled when clicking outside
         }
     });
 
-    // Mobile specific scroll behavior
+    // Mobile-specific Scroll Behavior
     $(window).on('scroll', function () {
         var currentScrollPos = window.pageYOffset;
-
-        // If we scroll down, the header goes out of view
         if (currentScrollPos > prevScrollPos) {
-            $('#header').css('top', '-100px'); // Move header out of view
+            $('#header').css('top', '-100px'); 
         } else {
-            $('#header').css('top', '0'); // Bring header back when scrolling up
+            $('#header').css('top', '0');
         }
         prevScrollPos = currentScrollPos;
     });

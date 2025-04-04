@@ -286,7 +286,7 @@ footer {
     }
 
     /* Prevent overflow */
-    body {
+    body.no-scroll {
         overflow: hidden;
     }
 }
