@@ -60,7 +60,7 @@ nav ul li a:hover {
 
 /* Main Content Section Styling */
 main {
-    padding-top: 20px; /* Reduced padding above the sections */
+    padding-top: 100px; /* Add top padding to compensate for the fixed header */
 }
 
 section {
