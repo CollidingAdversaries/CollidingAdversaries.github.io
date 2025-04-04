@@ -31,4 +31,24 @@ $(document).ready(function () {
             }
         }
     });
+
+    // Function to highlight active section in navbar
+    function highlightActiveSection() {
+        var scrollPosition = $(window).scrollTop() + headerHeight + 10; // Adjust for offset
+
+        $('section').each(function () {
+            var sectionTop = $(this).offset().top;
+            var sectionBottom = sectionTop + $(this).outerHeight();
+
+            if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                var sectionId = $(this).attr('id');
+                $('nav ul li a').removeClass('active'); // Remove from all
+                $('nav ul li a[href="#' + sectionId + '"]').addClass('active'); // Add to current
+            }
+        });
+    }
+
+    // Call function on scroll
+    $(window).on('scroll', highlightActiveSection);
+    highlightActiveSection(); // Run on page load in case user refreshes mid-scroll
 });
