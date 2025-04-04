@@ -142,7 +142,6 @@ section h2 {
     transition: background-color 0.3s; /* Optional: smooth transition for color changes */
 }
 
-/* Footer */
 footer {
     background: #333;
     color: white;
@@ -151,4 +150,8 @@ footer {
     position: relative;
     bottom: 0;
     width: 100%;
+    display: flex;
+    align-items: flex-end; /* Push content to the bottom */
+    justify-content: center; /* Center the text horizontally */
+    height: 35vh; /* Adjust as needed */
 }
