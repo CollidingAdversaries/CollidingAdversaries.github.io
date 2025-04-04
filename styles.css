@@ -15,15 +15,15 @@ html {
 
 /* Header */
 header {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
     position: fixed;
+    width: 100%;
     top: 0;
     left: 0;
-    width: 100%;
     z-index: 1000;
-    background-color: #333;
-    color: white;
-    padding: 20px;
-    box-sizing: border-box; /* Ensures header doesn't overflow */
 }
 
 /* Navigation Styling */
