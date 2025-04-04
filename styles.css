@@ -208,22 +208,16 @@ footer {
     display: none; /* Hide by default */
 }
 
-/* ======= MOBILE FIXES ======= */
+/* Mobile Styles */
 @media (max-width: 768px) {
-    /* Remove sticky header for mobile */
-    header {
-        position: relative;
-        padding: 15px;
-    }
-
-    /* Remove navigation from header */
+    /* Hide Desktop Navigation */
     .nav-links {
         display: none;
     }
 
-    /* Show the hamburger menu only on mobile */
+    /* Show Hamburger Button */
     .hamburger {
-        display: flex; /* Now it only appears on mobile */
+        display: flex; /* Now visible on mobile */
         position: fixed;
         bottom: 20px;
         right: 20px;
@@ -236,17 +230,18 @@ footer {
         justify-content: center;
         cursor: pointer;
         z-index: 1001;
+        flex-direction: column;
+        gap: 5px;
     }
 
-    /* Hamburger icon (three bars) */
+    /* Hamburger Bars */
     .hamburger div {
         width: 25px;
         height: 3px;
         background: white;
-        margin: 4px 0;
     }
 
-    /* Mobile Navigation Overlay */
+    /* Mobile Navigation (Hidden by Default) */
     .mobile-nav {
         position: fixed;
         top: 0;
@@ -261,10 +256,12 @@ footer {
         display: none;
     }
 
+    /* Show Menu When Active */
     .mobile-nav.active {
         display: flex;
     }
 
+    /* Menu Items */
     .mobile-nav a {
         color: white;
         font-size: 24px;
