@@ -205,16 +205,31 @@ footer {
 
 /* Mobile Navigation (Initially Hidden) */
 .mobile-nav {
-    display: none; /* Hidden by default */
+    display: none; /* Initially hidden */
     position: absolute;
-    bottom: 50px;  /* Position it above the hamburger button */
-    right: 20px;
-    width: 200px;  /* Set the width of the mobile menu */
-    background-color: #333;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    bottom: 60px; /* Position it above the hamburger button */
+    right: 10px; /* Position it near the right */
+    background-color: #333; /* Background color of the menu */
+    width: 200px; /* A fixed width, not full screen */
     padding: 10px;
-    z-index: 9999;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center; /* Center align the links */
+    z-index: 1000;
+}
+
+.mobile-nav a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 8px 0;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.mobile-nav a:hover {
+    background-color: #ff9800; /* Highlight on hover */
+    color: #333; /* Change text color on hover */
 }
 
 .mobile-nav ul {
@@ -247,22 +262,17 @@ footer {
 
 /* Show the mobile navigation when active */
 .mobile-nav.active {
-    display: block;  /* Show the mobile menu */
+    display: block;
 }
 
-/* Hamburger Button */
+/* Hamburger Icon Styling for Mobile */
 .hamburger {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #ff9800;
+    font-size: 30px;
     color: white;
-    padding: 10px 15px;
-    font-size: 24px;
+    background: transparent;
     border: none;
     cursor: pointer;
-    z-index: 1100;
-    border-radius: 5px;
+    z-index: 1001; /* Ensure it’s above the menu */
 }
 
 .hamburger:hover {
