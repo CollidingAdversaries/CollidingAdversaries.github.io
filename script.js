@@ -1,9 +1,6 @@
 $(document).ready(function () {
     var $header = $('#header');
-    console.log("Header: ", $header);
-
     var headerHeight = $header.outerHeight();
-    console.log("headerHeight: ", headerHeight);
 
     $('a.scrollto').on('click', function (e) {
         var target = this.hash;
@@ -14,7 +11,6 @@ $(document).ready(function () {
 
             // Calculate scroll position considering the header height
             var scrollto = $(target).offset().top - headerHeight;
-            console.log("Scroll To: ", scrollto); // Log the scroll position
 
             // Smooth scroll to the target position
             $('html, body').animate({
