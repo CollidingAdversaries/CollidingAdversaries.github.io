@@ -204,7 +204,7 @@ footer {
 }
 
 /* Hamburger Menu (Hidden by Default) */
-.hamburger-menu {
+.hamburger {
     display: none; /* Hide by default */
 }
 
@@ -222,7 +222,7 @@ footer {
     }
 
     /* Show the hamburger menu only on mobile */
-    .hamburger-menu {
+    .hamburger {
         display: flex; /* Now it only appears on mobile */
         position: fixed;
         bottom: 20px;
@@ -239,7 +239,7 @@ footer {
     }
 
     /* Hamburger icon (three bars) */
-    .hamburger-menu div {
+    .hamburger div {
         width: 25px;
         height: 3px;
         background: white;
