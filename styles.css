@@ -20,8 +20,10 @@ header {
     text-align: center;
     padding: 20px;
     width: 100%;
+    top: 0;
+    left: 0;
     z-index: 1000;
-    position: relative; /* Make it part of the normal flow, no fixed position */
+    position: relative;
     transition: top 0.3s ease;
 }
 
@@ -38,14 +40,9 @@ header {
     justify-content: center;
 }
 
-/* Active state for mobile menu */
-.nav-links.active {
-    display: block;
-}
-
 /* Mobile Header Styles */
 #mobile-menu {
-    display: none; /* Hidden by default */
+    display: none;
     font-size: 30px;
     color: white;
     background: transparent;
@@ -80,34 +77,145 @@ nav ul li a.active::after {
     content: "";
     position: absolute;
     left: 0;
-    bottom: -3px; /* Distance from text */
+    bottom: -3px;
     width: 100%;
-    height: 3px; /* Thickness of underline */
-    background-color: #ff9800; /* Highlight color */
+    height: 3px;
+    background-color: #ff9800;
     transition: left 0.3s ease, width 0.3s ease;
 }
 
-/* Hover Effect: Subtle Color Change */
+/* Hover Effect */
 nav ul li a:hover {
-    color: #ff9800; /* Matches the underline color */
+    color: #ff9800;
+}
+
+/* Sections */
+section {
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    background: white;
+    margin-bottom: 10px;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+}
+
+section:nth-child(even) {
+    background: #ddd;
+}
+
+/* Section Headings */
+section h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+/* Subsections */
+.subsection {
+    width: 85%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    box-sizing: border-box;
+}
+
+.subsection h3 {
+    color: #333;
+    margin-top: 0;
+}
+
+/* Active Navigation Link */
+.nav-menu li.active a {
+    color: #ff9800;
+    font-weight: bold;
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    background-color: #ff9800;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.back-to-top:hover {
+    background-color: #f57c00;
 }
 
 /* Sticky Header */
 #header {
     position: sticky;
     top: 0;
-    z-index: 50; /* Ensures the header stays on top */
-    background: #333; /* Match the header background */
-    padding: 20px 0;  /* Adjust the padding as needed */
-    transition: background-color 0.3s; /* Optional: smooth transition for color changes */
+    z-index: 50;
+    background: #333;
+    padding: 20px 0;
+    transition: background-color 0.3s;
 }
 
-/* Mobile-specific styles */
+/* Organizers */
+#organizers {
+    padding: 50px 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.organizers-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.organizer {
+    width: 220px;
+    text-align: center;
+}
+
+.organizer-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.organizer-info h3 {
+    margin: 10px 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.organizer-info p {
+    color: #555;
+    font-size: 1em;
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 35vh;
+}
+
+/* ======= MOBILE FIXES ======= */
 @media (max-width: 768px) {
-    /* Header adjustments */
+    /* Header */
     header {
         padding: 10px;
-        position: relative; /* No sticky header on mobile */
     }
 
     header h1 {
@@ -117,33 +225,72 @@ nav ul li a:hover {
 
     /* Mobile Navigation */
     nav ul {
-        display: none; /* Initially hide the menu on mobile */
+        display: none;
         flex-direction: column;
         text-align: center;
     }
 
     .nav-links.active {
         display: flex;
+        flex-direction: column;
+        width: 100%;
+        background: #333;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 10px 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
 
     nav ul li {
         margin: 10px 0;
     }
 
-    #mobile-menu {
-        display: block; /* Show hamburger on mobile */
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+        padding: 10px;
+        background-color: #333;
+        border-radius: 5px;
     }
 
-    /* Adjust sections */
+    .menu-toggle .bar {
+        width: 25px;
+        height: 4px;
+        background-color: white;
+        margin: 4px 0;
+    }
+
+    /* Fix section padding */
     section {
         padding: 20px;
     }
 
     .subsection {
-        width: 95%; /* Ensure the subsections fill most of the screen */
+        width: 95%;
         margin: 10px auto;
     }
 
+    /* Fix organizer alignment */
+    .organizers-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .organizer {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .organizer-img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+    }
+
+    /* Fix footer height */
     footer {
         padding: 20px;
         height: auto;
