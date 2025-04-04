@@ -64,7 +64,6 @@ main {
 }
 
 section {
-    height: 100vh; /* Keep full viewport height */
     padding: 50px; /* Reduced top padding */
     display: flex;
     align-items: center;
@@ -89,12 +88,10 @@ section h2 {
 }
 
 .subsection {
-    width: 80%; /* Set a fixed width (you can adjust this value) */
-    max-width: 1000px; /* Optional: maximum width if you don't want it too wide */
+    width: 85%; /* Set a fixed width (you can adjust this value) */
     margin: 20px auto; /* Center the subsections horizontally with space between them */
     padding: 20px;
     background-color: #f0f0f0;
-    border-left: 5px solid #ff9800;
     box-sizing: border-box; /* Ensures padding does not affect width */
 }
 
