@@ -216,16 +216,22 @@ footer {
         display: none;
     }
 
+    header {
+        width: 100vw; /* Ensures it spans the full viewport width */
+        padding: 15px; /* Slightly reduce padding */
+        box-sizing: border-box; /* Prevents extra width due to padding */
+    }
+
     /* Show Hamburger Button */
     .hamburger {
         display: flex; /* Now visible on mobile */
         position: fixed;
         bottom: 20px;
-        right: 20px;
+        right: 10px;
         background: #333;
         color: white;
-        width: 50px;
-        height: 50px;
+        width: 45px;
+        height: 45px;
         border-radius: 50%;
         align-items: center;
         justify-content: center;
