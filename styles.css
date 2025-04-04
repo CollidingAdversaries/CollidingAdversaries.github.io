@@ -217,7 +217,7 @@ footer {
     }
 
     header {
-        width: 90vw !important; /* Ensures it spans the full viewport width */
+        width: 100vw !important; /* Ensures it spans the full viewport width */
         padding: 15px !important; /* Slightly reduce padding */
         box-sizing: border-box; /* Prevents extra width due to padding */
     }
@@ -227,7 +227,6 @@ footer {
         display: flex; /* Now visible on mobile */
         position: fixed;
         bottom: 20px;
-        right: 10px;
         background: #333;
         color: white;
         width: 45px;
