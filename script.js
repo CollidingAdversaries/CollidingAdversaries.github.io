@@ -6,38 +6,39 @@ document.addEventListener("DOMContentLoaded", () => {
     const headerHeight = document.querySelector('header').offsetHeight;
 
     // Function to update active link based on the current section
-    function updateActiveLink() {
-        let currentSection = "";
-
-        // Get the middle of the viewport
-        const middleOfViewport = window.scrollY + window.innerHeight / 2;
-
-        sections.forEach(section => {
-            // Calculate section position dynamically
-            const sectionTop = section.offsetTop - headerHeight; // Adjust the section top for header height
-            const sectionBottom = sectionTop + section.offsetHeight; // Bottom of the section
-
-            // Check if the middle of the viewport is within the section's range
-            if (middleOfViewport >= sectionTop && middleOfViewport < sectionBottom) {
-                currentSection = section.getAttribute("id");
-            }
-        });
-
-        // Update active link in the navigation menu based on the current section
+    function updateActiveLink(currentSectionId) {
         navLinks.forEach(link => {
             link.classList.remove("active");
-            if (link.getAttribute("href").includes(currentSection)) {
+            if (link.getAttribute("href").substring(1) === currentSectionId) {
                 link.classList.add("active");
             }
         });
     }
 
-    // Scroll event listener to track scroll position and update active links
-    window.addEventListener("scroll", () => {
-        updateActiveLink();
+    // Intersection Observer setup to detect which section is in view
+    const observerOptions = {
+        root: null,  // viewport
+        threshold: 0.5  // section must be at least 50% visible to be considered in view
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const section = entry.target;
+            const sectionId = section.getAttribute('id');
+
+            if (entry.isIntersecting) {
+                // When the section is in view, update the active link
+                updateActiveLink(sectionId);
+            }
+        });
+    }, observerOptions);
+
+    // Observe each section
+    sections.forEach(section => {
+        observer.observe(section);
     });
 
-    // Smooth scrolling behavior with adjusted section positioning
+    // Smooth scroll behavior with header offset
     navLinks.forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -64,7 +65,4 @@ document.addEventListener("DOMContentLoaded", () => {
             this.classList.add("active");
         });
     });
-
-    // Update the active link on page load to ensure the correct section is highlighted
-    updateActiveLink();
 });
