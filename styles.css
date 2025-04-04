@@ -203,6 +203,11 @@ footer {
     height: 35vh;
 }
 
+/* Hamburger Menu (Hidden by Default) */
+.hamburger-menu {
+    display: none; /* Hide by default */
+}
+
 /* ======= MOBILE FIXES ======= */
 @media (max-width: 768px) {
     /* Remove sticky header for mobile */
@@ -216,8 +221,9 @@ footer {
         display: none;
     }
 
-    /* Mobile menu button (Hamburger) */
+    /* Show the hamburger menu only on mobile */
     .hamburger-menu {
+        display: flex; /* Now it only appears on mobile */
         position: fixed;
         bottom: 20px;
         right: 20px;
@@ -226,7 +232,6 @@ footer {
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
@@ -269,40 +274,5 @@ footer {
 
     .mobile-nav a:hover {
         color: #ff9800;
-    }
-
-    /* Fix section padding */
-    section {
-        padding: 20px;
-    }
-
-    .subsection {
-        width: 95%;
-        margin: 10px auto;
-    }
-
-    /* Fix organizer alignment */
-    .organizers-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-
-    .organizer {
-        width: 100%;
-        max-width: 300px;
-    }
-
-    .organizer-img {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-    }
-
-    /* Fix footer height */
-    footer {
-        padding: 20px;
-        height: auto;
     }
 }
