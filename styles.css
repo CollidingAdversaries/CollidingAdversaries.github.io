@@ -142,6 +142,42 @@ section h2 {
     transition: background-color 0.3s; /* Optional: smooth transition for color changes */
 }
 
+#organizers {
+    padding: 50px 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.organizers-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px; /* Add space between each organizer block */
+}
+
+.organizer {
+    width: 220px;
+    text-align: center;
+}
+
+.organizer-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.organizer-info h3 {
+    margin: 10px 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.organizer-info p {
+    color: #555;
+    font-size: 1em;
+}
+
 footer {
     background: #333;
     color: white;
