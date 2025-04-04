@@ -37,7 +37,7 @@ nav ul li a {
     text-decoration: none;
     padding: 5px 10px;
     position: relative;
-    transition: color 0.3s;
+    transition: color 0.3s ease-in-out;
 }
 
 /* Underline Effect for Active Link */
@@ -50,6 +50,11 @@ nav ul li a.active::after {
     height: 3px; /* Thickness of underline */
     background-color: #ff9800; /* Highlight color */
     transition: width 0.3s ease-in-out;
+}
+
+/* Hover Effect: Subtle Color Change */
+nav ul li a:hover {
+    color: #ff9800; /* Matches the underline color */
 }
 
 /* Sections */
