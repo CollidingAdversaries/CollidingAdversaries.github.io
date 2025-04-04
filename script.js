@@ -25,14 +25,9 @@ $(document).ready(function () {
         $('ul.nav-links').toggleClass('active'); // Toggle the 'active' class on mobile menu
     });
 
-    // Hide header on scroll down, show on scroll up for mobile
+    // Remove the sticky behavior completely for mobile
+    // The header will now scroll with the page and not reappear when scrolling up
     $(window).on('scroll', function () {
-        var currentScrollPos = window.pageYOffset;
-        if (prevScrollPos > currentScrollPos) {
-            $('#header').css('top', '0'); // Show the header when scrolling up
-        } else {
-            $('#header').css('top', '-' + headerHeight + 'px'); // Hide the header when scrolling down
-        }
-        prevScrollPos = currentScrollPos;
+        // No header behavior change when scrolling up or down anymore on mobile.
     });
 });
