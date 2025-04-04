@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Update section highlight logic based on scroll position
         sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100; // Adjust for header height
+            const sectionTop = section.offsetTop - 160; // Adjust for header height
             const sectionBottom = sectionTop + section.offsetHeight;
 
             // If the current scroll position is within the section's range
