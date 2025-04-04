@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
         let currentSection = "";
 
         sections.forEach(section => {
-            // Adjust section's offset to take the header height into account
             const sectionTop = section.offsetTop - document.querySelector('header').offsetHeight;
             const sectionBottom = sectionTop + section.offsetHeight;
 
@@ -39,6 +38,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 top: targetElement.offsetTop - document.querySelector('header').offsetHeight,
                 behavior: 'smooth'
             });
+
+            // Remove active class from all links and add it to the clicked one
+            navLinks.forEach(link => link.classList.remove("active"));
+            this.classList.add("active");
         });
     });
 });

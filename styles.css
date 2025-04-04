@@ -50,7 +50,7 @@ nav ul li a.active::after {
     width: 100%;
     height: 3px; /* Thickness of underline */
     background-color: #ff9800; /* Highlight color */
-    transition: width 0.3s ease-in-out;
+    transition: left 0.3s ease, width 0.3s ease; /* Transition for smooth movement of the underline */
 }
 
 /* Hover Effect: Subtle Color Change */
