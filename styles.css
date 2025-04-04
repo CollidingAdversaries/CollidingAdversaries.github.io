@@ -265,10 +265,9 @@ footer {
     .mobile-nav {
         display: none;
         position: absolute;
-        bottom: 60px; /* Appear above the button */
+        bottom: 10vh; /* Appear above the button */
         right: 0;
         background: #333;
-        width: 200px;
         padding: 10px;
         border-radius: 8px;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
