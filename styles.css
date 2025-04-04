@@ -203,81 +203,6 @@ footer {
     height: 35vh;
 }
 
-/* Mobile Navigation (Initially Hidden) */
-.mobile-nav {
-    display: none; /* Initially hidden */
-    position: absolute;
-    bottom: 60px; /* Position it above the hamburger button */
-    right: 10px; /* Position it near the right */
-    background-color: #333; /* Background color of the menu */
-    width: 200px; /* A fixed width, not full screen */
-    padding: 10px;
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    text-align: center; /* Center align the links */
-    z-index: 1000;
-}
-
-.mobile-nav a {
-    display: block;
-    color: white;
-    text-decoration: none;
-    padding: 8px 0;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-.mobile-nav a:hover {
-    background-color: #ff9800; /* Highlight on hover */
-    color: #333; /* Change text color on hover */
-}
-
-.mobile-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.mobile-nav ul li {
-    text-align: center;
-    margin: 10px 0;
-}
-
-.mobile-nav ul li {
-    margin: 20px 0;
-}
-
-.mobile-nav ul li a {
-    color: white;
-    text-decoration: none;
-    display: block;
-    padding: 8px 0;
-    font-size: 16px;
-    transition: color 0.3s ease;
-}
-
-.mobile-nav ul li a:hover {
-    color: #ff9800;
-}
-
-/* Show the mobile navigation when active */
-.mobile-nav.active {
-    display: block;
-}
-
-/* Hamburger Icon Styling for Mobile */
-.hamburger {
-    font-size: 30px;
-    color: white;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    z-index: 1001; /* Ensure it’s above the menu */
-}
-
-.hamburger:hover {
-    background: #f57c00;
-}
 
 /* Hamburger Menu (Hidden by Default) */
 .hamburger {
@@ -317,39 +242,51 @@ footer {
         background: white;
     }
 
-    /* Mobile Navigation (Hidden by Default) */
+    /* Mobile Navigation (Small Box Above Button) */
     .mobile-nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.9);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        display: none;
+        display: none; /* Initially hidden */
+        position: absolute;
+        bottom: 70px; /* Position it above the hamburger button */
+        right: 10px; /* Position it near the right */
+        background-color: #333; /* Background color of the menu */
+        width: 200px; /* A fixed width, not full screen */
+        padding: 10px;
+        border-radius: 8px; /* Rounded corners */
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        text-align: center; /* Center align the links */
+        z-index: 1000;
     }
 
     /* Show Menu When Active */
     .mobile-nav.active {
-        display: flex;
+        display: block;
     }
 
     /* Menu Items */
     .mobile-nav a {
+        display: block;
         color: white;
-        font-size: 24px;
-        margin: 15px;
         text-decoration: none;
+        padding: 8px 0;
+        font-size: 16px;
+        transition: background-color 0.3s;
     }
 
     .mobile-nav a:hover {
-        color: #ff9800;
+        background-color: #ff9800; /* Highlight on hover */
+        color: #333; /* Change text color on hover */
+    }
+
+    /* Remove Mobile Nav for Larger Screens */
+    @media (min-width: 769px) {
+        .mobile-nav {
+            display: none; /* Hide mobile nav on larger screens */
+        }
+        #mobile-menu {
+            display: none; /* Hide hamburger on larger screens */
+        }
     }
 }
-
 
 /* Optional: Close mobile navigation on larger screens */
 @media (min-width: 768px) {
