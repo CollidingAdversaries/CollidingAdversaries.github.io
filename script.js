@@ -21,6 +21,6 @@ $(document).ready(function () {
 
     // Mobile menu toggle
     $('#mobile-menu').on('click', function () {
-        $('ul.nav-links').toggleClass('active');
+        $('ul.nav-links').toggleClass('active'); // Toggle the 'active' class on mobile menu
     });
 });
