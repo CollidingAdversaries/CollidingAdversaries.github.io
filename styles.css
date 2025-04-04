@@ -64,7 +64,7 @@ main {
 }
 
 section {
-    padding: 50px; /* Reduced top padding */
+    padding: 50px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -72,6 +72,7 @@ section {
     background: white;
     margin-bottom: 10px;
     box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+    min-height: 100vh; /* Ensures each section takes at least the full height of the viewport */
 }
 
 #about {
