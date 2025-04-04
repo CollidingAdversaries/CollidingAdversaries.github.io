@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Smooth scrolling with header offset
+    // Smooth scrolling with header offset and prevent multiple highlights during scroll
     navLinks.forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -39,9 +39,31 @@ document.addEventListener("DOMContentLoaded", () => {
                 behavior: 'smooth'
             });
 
-            // Remove active class from all links and add it to the clicked one
+            // Add active class after scroll has started (to avoid multiple active class application during scrolling)
             navLinks.forEach(link => link.classList.remove("active"));
             this.classList.add("active");
+        });
+    });
+
+    // Listen for the scroll end event to finalize active class update
+    window.addEventListener("scrollend", () => {
+        let currentSection = "";
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - document.querySelector('header').offsetHeight;
+            const sectionBottom = sectionTop + section.offsetHeight;
+
+            if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
+                currentSection = section.getAttribute("id");
+            }
+        });
+
+        // Update active link based on the current section when scroll has ended
+        navLinks.forEach(link => {
+            link.classList.remove("active");
+            if (link.getAttribute("href").includes(currentSection)) {
+                link.classList.add("active");
+            }
         });
     });
 });
