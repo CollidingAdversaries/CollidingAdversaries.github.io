@@ -6,9 +6,13 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", () => {
         let currentSection = "";
 
+        // Update section highlight logic based on scroll position
         sections.forEach(section => {
             const sectionTop = section.offsetTop - 100; // Adjust for header height
-            if (window.scrollY >= sectionTop) {
+            const sectionBottom = sectionTop + section.offsetHeight;
+
+            // If the current scroll position is within the section's range
+            if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
                 currentSection = section.getAttribute("id");
             }
         });
