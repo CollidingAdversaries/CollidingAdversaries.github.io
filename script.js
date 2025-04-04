@@ -1,11 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll(".nav-link");
-
     const headerHeight = document.querySelector('header').offsetHeight; // Get the height of the fixed header
 
-    // Scroll event listener to highlight active section based on scroll position
-    window.addEventListener("scroll", () => {
+    // Function to update active link based on scroll position
+    function updateActiveLink() {
         let currentSection = "";
 
         sections.forEach(section => {
@@ -23,7 +22,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 link.classList.add("active");
             }
         });
-    });
+    }
+
+    // Scroll event listener to highlight active section based on scroll position
+    window.addEventListener("scroll", updateActiveLink);
 
     // Smooth scrolling with header offset for the navigation links
     navLinks.forEach(anchor => {
@@ -33,20 +35,12 @@ document.addEventListener("DOMContentLoaded", () => {
             const targetId = this.getAttribute('href').substring(1); // Get the target section ID
             const targetElement = document.getElementById(targetId);
 
-            // Calculate the cumulative height of all previous sections
-            let cumulativeHeight = 0;
-
-            sections.forEach(section => {
-                if (section.id === targetId) return; // Skip the target section itself
-                cumulativeHeight += section.offsetHeight; // Add each section's height to the total
-            });
-
-            // Account for the header height (to ensure it's not covered)
-            const scrollToPosition = cumulativeHeight - headerHeight;
+            // Calculate the position to scroll to, including accounting for the fixed header
+            const targetOffsetTop = targetElement.offsetTop - headerHeight;
 
             // Scroll to the target section while accounting for the fixed header
             window.scrollTo({
-                top: scrollToPosition,
+                top: targetOffsetTop,
                 behavior: 'smooth'
             });
         });
