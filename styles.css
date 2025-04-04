@@ -20,8 +20,6 @@ header {
     text-align: center;
     padding: 20px;
     width: 100%;
-    top: 0;
-    left: 0;
     z-index: 1000;
     position: relative; /* Make it part of the normal flow, no fixed position */
     transition: top 0.3s ease;
@@ -94,75 +92,6 @@ nav ul li a:hover {
     color: #ff9800; /* Matches the underline color */
 }
 
-
-section {
-    padding: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
-    background: white;
-    margin-bottom: 10px;
-    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
-}
-
-
-section:nth-child(even) {
-    background: #ddd;
-}
-
-/* Headings in Sections */
-section h2 {
-    margin-top: 0; /* Remove unnecessary space above the headline */
-}
-
-.subsection {
-    width: 85%; /* Set a fixed width (you can adjust this value) */
-    margin: 20px auto; /* Center the subsections horizontally with space between them */
-    padding: 20px;
-    background-color: #f0f0f0;
-    box-sizing: border-box; /* Ensures padding does not affect width */
-}
-
-.subsection h3 {
-    color: #333;
-    margin-top: 0;
-}
-
-/* Optional: Adding spacing between sections */
-section {
-    padding: 50px 0;
-}
-
-section h2 {
-    text-align: center; /* Ensure the main header is centered */
-}
-
-/* Styling for active navigation link */
-.nav-menu li.active a {
-    color: #ff9800; /* Highlight color for active links */
-    font-weight: bold; /* Optional: makes active link bold */
-}
-
-
-/* Back to top button */
-.back-to-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: none;
-    background-color: #ff9800;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 50%;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.back-to-top:hover {
-    background-color: #f57c00;
-}
-
 /* Sticky Header */
 #header {
     position: sticky;
@@ -173,62 +102,12 @@ section h2 {
     transition: background-color 0.3s; /* Optional: smooth transition for color changes */
 }
 
-#organizers {
-    padding: 50px 0;
-    background-color: #f4f4f4;
-    text-align: center;
-}
-
-.organizers-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 30px; /* Add space between each organizer block */
-}
-
-.organizer {
-    width: 220px;
-    text-align: center;
-}
-
-.organizer-img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
-
-.organizer-info h3 {
-    margin: 10px 0;
-    font-size: 1.2em;
-    color: #333;
-}
-
-.organizer-info p {
-    color: #555;
-    font-size: 1em;
-}
-
-footer {
-    background: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    align-items: flex-end; /* Push content to the bottom */
-    justify-content: center; /* Center the text horizontally */
-    height: 35vh; /* Adjust as needed */
-}
-
-
 /* Mobile-specific styles */
 @media (max-width: 768px) {
     /* Header adjustments */
     header {
         padding: 10px;
+        position: relative; /* No sticky header on mobile */
     }
 
     header h1 {
@@ -251,19 +130,8 @@ footer {
         margin: 10px 0;
     }
 
-    .menu-toggle {
-        display: block;
-        cursor: pointer;
-        padding: 10px;
-        background-color: #333;
-        border-radius: 5px;
-    }
-
-    .menu-toggle .bar {
-        width: 25px;
-        height: 4px;
-        background-color: white;
-        margin: 4px 0;
+    #mobile-menu {
+        display: block; /* Show hamburger on mobile */
     }
 
     /* Adjust sections */
@@ -276,26 +144,8 @@ footer {
         margin: 10px auto;
     }
 
-    .organizers-container {
-        display: block;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .organizer {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-    .organizer-img {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-    }
-
     footer {
         padding: 20px;
         height: auto;
     }
 }
-

@@ -25,9 +25,16 @@ $(document).ready(function () {
         $('ul.nav-links').toggleClass('active'); // Toggle the 'active' class on mobile menu
     });
 
-    // Remove the sticky behavior completely for mobile
-    // The header will now scroll with the page and not reappear when scrolling up
+    // Mobile specific scroll behavior
     $(window).on('scroll', function () {
-        // No header behavior change when scrolling up or down anymore on mobile.
+        var currentScrollPos = window.pageYOffset;
+
+        // If we scroll down, the header goes out of view
+        if (currentScrollPos > prevScrollPos) {
+            $('#header').css('top', '-100px'); // Move header out of view
+        } else {
+            $('#header').css('top', '0'); // Bring header back when scrolling up
+        }
+        prevScrollPos = currentScrollPos;
     });
 });
