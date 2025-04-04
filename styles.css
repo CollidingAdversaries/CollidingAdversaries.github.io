@@ -211,6 +211,16 @@ footer {
 
 /* Mobile Styles */
 @media (max-width: 768px) {
+    .mobile-nav-wrapper {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1001;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
     /* Hide Desktop Navigation */
     .nav-links {
         display: none;
@@ -224,22 +234,18 @@ footer {
 
     /* Show Hamburger Button */
     .hamburger {
-        display: flex; /* Now visible on mobile */
-        position: fixed;
-        bottom: 5vh;
-        right: 10vw;
         background: #333;
         color: white;
-        width: 45px;
-        height: 45px;
+        font-size: 30px;
+        border: none;
         border-radius: 50%;
-        align-items: center;
-        justify-content: center;
+        width: 50px;
+        height: 50px;
         cursor: pointer;
-        z-index: 1001;
-        flex-direction: column;
-        gap: 5px;
-        position: relative;
+        z-index: 1002;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     /* Hamburger Bars */
@@ -249,18 +255,24 @@ footer {
         background: white;
     }
 
+    /* Keep button hover effect */
+    .hamburger:hover {
+        background: #f57c00;
+    }
+
     /* Mobile Navigation (Initially Hidden) */
+    /* Dropdown Menu */
     .mobile-nav {
+        display: none;
         position: absolute;
-        top: -220px; /* Adjust depending on your number of items */
+        bottom: 60px; /* Appear above the button */
         right: 0;
-        background-color: #333;
+        background: #333;
         width: 200px;
         padding: 10px;
         border-radius: 8px;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-        display: none;
-        z-index: 1000;
+        text-align: left;
     }
 
     .mobile-nav ul {
@@ -297,6 +309,7 @@ footer {
     body.no-scroll {
         overflow: hidden;
     }
+    
 }
 
 /* Optional: Close mobile navigation on larger screens */
