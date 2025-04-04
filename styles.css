@@ -5,6 +5,7 @@ body {
     padding: 0;
     background: #f4f4f4;
     color: #333;
+    scroll-behavior: smooth;
 }
 
 /* Header */
@@ -13,11 +14,17 @@ header {
     color: white;
     text-align: center;
     padding: 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
 
 nav ul {
     list-style: none;
     padding: 0;
+    margin: 10px 0 0;
 }
 
 nav ul li {
@@ -30,24 +37,25 @@ nav ul li a {
     text-decoration: none;
 }
 
-/* Main Content */
+/* Sections */
 main {
+    padding-top: 80px; /* Space for fixed header */
+}
+
+section {
+    height: 100vh; /* Full viewport height */
+    padding: 50px;
     display: flex;
-    justify-content: space-between;
-    padding: 20px;
-}
-
-.content {
-    width: 70%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     background: white;
-    padding: 20px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    margin-bottom: 10px;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
 }
 
-.sidebar {
-    width: 25%;
+section:nth-child(even) {
     background: #ddd;
-    padding: 20px;
 }
 
 /* Footer */
