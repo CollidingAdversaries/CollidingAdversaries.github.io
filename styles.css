@@ -26,6 +26,23 @@ header {
     z-index: 1000;
 }
 
+/* Header Content */
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Mobile Header Styles */
+#mobile-menu {
+    display: none; /* Hidden by default */
+    font-size: 30px;
+    color: white;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
 /* Navigation Styling */
 nav ul {
     list-style: none;
