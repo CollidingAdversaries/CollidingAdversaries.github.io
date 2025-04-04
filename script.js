@@ -3,13 +3,12 @@ $(document).ready(function () {
     var headerHeight = $header.outerHeight() || 0; // Ensure valid number
     console.log("Header Height: ", headerHeight);
 
-    // Prevent browser auto-scroll to anchor on page load
-    setTimeout(function () {
-        window.scrollTo(0, 0);
-    }, 1);
+    // Prevent auto-jump by resetting scroll position on load
+    history.scrollRestoration = "manual";
+    window.scrollTo(0, 0);
 
     $('a.scrollto').on('click', function (e) {
-        e.preventDefault(); // Stop default behavior
+        e.preventDefault(); // Prevent default jump behavior
 
         var target = this.hash;
         console.log("Hash Target: ", target);
@@ -17,20 +16,22 @@ $(document).ready(function () {
         if ($(target).length) {
             var $target = $(target);
 
-            // Hide instant browser jump
-            window.scrollTo(0, 0);
+            // Stop any ongoing scroll animation immediately
+            $('html, body').stop(true, true);
 
-            // Wait for layout to stabilize before scrolling
+            // Delay for layout stabilization
             setTimeout(function () {
                 var scrollto = $target.offset().top - headerHeight;
                 console.log("Scroll To: ", scrollto);
 
-                history.pushState(null, null, ' '); // Remove #id from URL
+                // Remove hash from URL (prevents browser jump)
+                history.pushState(null, null, ' ');
 
-                $('html, body').stop(true, false).animate({
+                // Perform smooth scrolling
+                $('html, body').animate({
                     scrollTop: scrollto
-                }, 800, 'easeInOutExpo');
-            }, 50); // Small delay ensures stable layout
+                }, 600, 'easeInOutCubic'); // 'easeInOutCubic' gives smoother effect
+            }, 10); // Small delay ensures layout is stable
         } else {
             console.log("Target element not found: ", target);
         }
