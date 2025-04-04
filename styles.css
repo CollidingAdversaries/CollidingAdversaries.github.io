@@ -242,19 +242,19 @@ footer {
         background: white;
     }
 
-    /* Mobile Navigation (Top-Down List) */
+    /* Mobile Navigation (Initially Hidden) */
     .mobile-nav {
         display: none; /* Initially hidden */
         position: absolute;
         bottom: 70px; /* Position it above the hamburger button */
         right: 10px; /* Position it near the right */
         background-color: #333; /* Background color of the menu */
-        width: 200px; /* Fixed width for the menu */
+        width: 200px; /* A fixed width, not full screen */
         padding: 10px;
         border-radius: 8px; /* Rounded corners */
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        text-align: left; /* Align the links to the left */
         z-index: 1000;
-        text-align: center; /* Center the links */
     }
 
     /* Show Menu When Active */
@@ -268,7 +268,7 @@ footer {
         color: white;
         text-decoration: none;
         padding: 12px 0;
-        font-size: 18px;
+        font-size: 16px;
         transition: background-color 0.3s;
     }
 
@@ -277,14 +277,9 @@ footer {
         color: #333; /* Change text color on hover */
     }
 
-    /* Remove Mobile Nav for Larger Screens */
-    @media (min-width: 769px) {
-        .mobile-nav {
-            display: none; /* Hide mobile nav on larger screens */
-        }
-        #mobile-menu {
-            display: none; /* Hide hamburger on larger screens */
-        }
+    /* Prevent overflow */
+    body {
+        overflow: hidden;
     }
 }
 
