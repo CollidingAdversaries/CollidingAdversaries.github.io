@@ -9,14 +9,16 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", () => {
         let currentSection = "";
 
-        // Calculate which section is currently in view
+        // Get the middle of the viewport
+        const middleOfViewport = window.scrollY + window.innerHeight / 2;
+
         sections.forEach(section => {
-            // Account for the fixed header's height when calculating the section's visibility
+            // Calculate section position
             const sectionTop = section.offsetTop - headerHeight;
             const sectionBottom = sectionTop + section.offsetHeight;
 
-            // Check if the section is within the viewport
-            if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
+            // Check if the middle of the viewport is within the section's range
+            if (middleOfViewport >= sectionTop && middleOfViewport < sectionBottom) {
                 currentSection = section.getAttribute("id");
             }
         });
