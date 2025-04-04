@@ -5,17 +5,17 @@ document.addEventListener("DOMContentLoaded", () => {
     // Adjust header height dynamically in case it changes
     const headerHeight = document.querySelector('header').offsetHeight;
 
-    // Scroll event listener
-    window.addEventListener("scroll", () => {
+    // Function to update active link based on the current section
+    function updateActiveLink() {
         let currentSection = "";
 
         // Get the middle of the viewport
         const middleOfViewport = window.scrollY + window.innerHeight / 2;
 
         sections.forEach(section => {
-            // Calculate section position
-            const sectionTop = section.offsetTop - headerHeight;
-            const sectionBottom = sectionTop + section.offsetHeight;
+            // Calculate section position dynamically
+            const sectionTop = section.offsetTop - headerHeight; // Adjust the section top for header height
+            const sectionBottom = sectionTop + section.offsetHeight; // Bottom of the section
 
             // Check if the middle of the viewport is within the section's range
             if (middleOfViewport >= sectionTop && middleOfViewport < sectionBottom) {
@@ -30,6 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 link.classList.add("active");
             }
         });
+    }
+
+    // Scroll event listener to track scroll position and update active links
+    window.addEventListener("scroll", () => {
+        updateActiveLink();
     });
 
     // Smooth scrolling behavior with adjusted section positioning
@@ -59,4 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
             this.classList.add("active");
         });
     });
+
+    // Update the active link on page load to ensure the correct section is highlighted
+    updateActiveLink();
 });
