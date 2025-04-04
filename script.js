@@ -3,6 +3,9 @@ $(document).ready(function () {
     var $header = $('#header');
     var headerHeight = $header.outerHeight();
 
+    // Check if header height is being calculated correctly
+    console.log(headerHeight);
+
     // Smooth scrolling for navigation menu links with 'scrollto' class
     $('a.scrollto').on('click', function (e) {
         var target = this.hash;
