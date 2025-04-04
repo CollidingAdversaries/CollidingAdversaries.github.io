@@ -110,6 +110,23 @@ section h2 {
     text-align: center; /* Ensure the main header is centered */
 }
 
+/* Styling for active navigation link */
+.nav-menu li.active a {
+    color: #ff9800; /* Highlight color for active links */
+    font-weight: bold; /* Optional: makes active link bold */
+}
+
+
+/* Sticky Header */
+#header {
+    position: sticky;
+    top: 0;
+    z-index: 50; /* Ensures the header stays on top */
+    background: #333; /* Match the header background */
+    padding: 20px 0;  /* Adjust the padding as needed */
+    transition: background-color 0.3s; /* Optional: smooth transition for color changes */
+}
+
 /* Footer */
 footer {
     background: #333;

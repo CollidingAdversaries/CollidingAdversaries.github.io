@@ -1,48 +1,57 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll(".nav-link");
-    const headerHeight = document.querySelector('header').offsetHeight; // Get the height of the fixed header
+$(document).ready(function () {
+    // Cache the header element and get its height
+    var $header = $('#header');
+    var headerHeight = $header.outerHeight();
 
-    // Function to update active link based on scroll position
-    function updateActiveLink() {
-        let currentSection = "";
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - headerHeight; // Subtract header height from the section's top position
-            const sectionBottom = sectionTop + section.offsetHeight;
-
-            if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
-                currentSection = section.getAttribute("id");
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove("active");
-            if (link.getAttribute("href").includes(currentSection)) {
-                link.classList.add("active");
-            }
-        });
-    }
-
-    // Scroll event listener to highlight active section based on scroll position
-    window.addEventListener("scroll", updateActiveLink);
-
-    // Smooth scrolling with header offset for the navigation links
-    navLinks.forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+    // Smooth scrolling for navigation menu links with 'scrollto' class
+    $('a.scrollto').on('click', function (e) {
+        var target = this.hash;
+        if ($(target).length) {
             e.preventDefault();
 
-            const targetId = this.getAttribute('href').substring(1); // Get the target section ID
-            const targetElement = document.getElementById(targetId);
+            // Calculate scroll position considering the header height
+            var scrollto = $(target).offset().top - headerHeight;
 
-            // Calculate the position to scroll to, including accounting for the fixed header
-            const targetOffsetTop = targetElement.offsetTop - headerHeight;
+            // Smooth scroll to the target position
+            $('html, body').animate({
+                scrollTop: scrollto
+            }, 1500, 'easeInOutExpo');
+        }
+    });
 
-            // Scroll to the target section while accounting for the fixed header
-            window.scrollTo({
-                top: targetOffsetTop,
-                behavior: 'smooth'
-            });
+    // Highlight active nav items on scroll
+    $(window).on('scroll', function () {
+        var cur_pos = $(this).scrollTop() + 10; // Offset for smoother tracking
+
+        $('section').each(function () {
+            var top = $(this).offset().top - headerHeight,
+                bottom = top + $(this).outerHeight();
+
+            // Check if current scroll position is within the section
+            if (cur_pos >= top && cur_pos <= bottom) {
+                // Remove active class from all nav items
+                $('.nav-menu li').removeClass('active');
+
+                // Add active class to the corresponding nav item
+                $('.nav-menu a[href="#' + $(this).attr('id') + '"]').parent('li').addClass('active');
+            }
         });
+    });
+
+    // Back to top button visibility
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+            $('.back-to-top').fadeIn('slow');
+        } else {
+            $('.back-to-top').fadeOut('slow');
+        }
+    });
+
+    // Back to top button click action
+    $('.back-to-top').click(function () {
+        $('html, body').animate({
+            scrollTop: 0
+        }, 1500, 'easeInOutExpo');
+        return false;
     });
 });
