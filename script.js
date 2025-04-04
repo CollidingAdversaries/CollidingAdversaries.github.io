@@ -2,20 +2,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll(".nav-link");
 
-    // Variable to prevent highlighting issues during scroll
     let isScrolling = false;
+    let scrollTimeout;
 
-    // Scroll event listener for updating active link
-    window.addEventListener("scroll", () => {
-        if (isScrolling) return; // Prevent updates during scrolling
-
+    // Function to update active link based on the current section
+    function updateActiveLink() {
         let currentSection = "";
 
         sections.forEach(section => {
             const sectionTop = section.offsetTop - document.querySelector('header').offsetHeight;
             const sectionBottom = sectionTop + section.offsetHeight;
 
-            // Check if the current scroll position is within the section
             if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
                 currentSection = section.getAttribute("id");
             }
@@ -28,6 +25,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 link.classList.add("active");
             }
         });
+    }
+
+    // Scroll event listener to track scroll position
+    window.addEventListener("scroll", () => {
+        if (isScrolling) return; // Prevent active class updates while scrolling
+
+        // Set a timeout to run when scroll finishes
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(updateActiveLink, 150); // 150ms delay for detecting scroll end
     });
 
     // Smooth scrolling with header offset and prevent multiple highlights during scroll
@@ -49,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
             navLinks.forEach(link => link.classList.remove("active"));
             this.classList.add("active");
 
-            // Wait a short amount of time before allowing new active class changes
+            // After scroll finishes, allow active link updates again
             setTimeout(() => {
                 isScrolling = false;
             }, 500); // Adjust time to match your smooth scroll duration
