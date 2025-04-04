@@ -1,11 +1,13 @@
 $(document).ready(function () {
     var $header = $('#header');
+    console.log("Header: ", $header);
+
     var headerHeight = $header.outerHeight();
+    console.log("headerHeight: ", headerHeight);
 
     $('a.scrollto').on('click', function (e) {
         var target = this.hash;
         console.log("Hash Target: ", target); // Log the target link (e.g., #about)
-        console.log("headerHeight: ", headerHeight); // Log the target link (e.g., #about)
 
         if ($(target).length) {
             e.preventDefault();
