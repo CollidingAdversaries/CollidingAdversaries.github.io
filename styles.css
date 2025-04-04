@@ -65,8 +65,7 @@ main {
 
 section {
     height: 100vh; /* Keep full viewport height */
-    padding-top: 20px; /* Reduced top padding */
-    padding: 50px;
+    padding: 50px; /* Reduced top padding */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -74,6 +73,10 @@ section {
     background: white;
     margin-bottom: 10px;
     box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+}
+
+#about {
+    padding-top: 100px !important;
 }
 
 section:nth-child(even) {
