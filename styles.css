@@ -217,7 +217,7 @@ footer {
     }
 
     header {
-        width: 100vw !important; /* Ensures it spans the full viewport width */
+        width: 90vw !important; /* Ensures it spans the full viewport width */
         padding: 15px !important; /* Slightly reduce padding */
         box-sizing: border-box; /* Prevents extra width due to padding */
     }
