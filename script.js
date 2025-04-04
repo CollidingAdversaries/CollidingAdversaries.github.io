@@ -31,4 +31,29 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
+    // Smooth scrolling behavior
+    navLinks.forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href').substring(1); // Get the target section ID
+            const targetElement = document.getElementById(targetId);
+
+            // Calculate the position to scroll to center the section in the viewport
+            const targetTop = targetElement.offsetTop - headerHeight; // Top of the section adjusted for the header height
+            const targetHeight = targetElement.offsetHeight;
+            const targetCenter = targetTop + targetHeight / 2 - window.innerHeight / 2;
+
+            // Smoothly scroll to the target center
+            window.scrollTo({
+                top: targetCenter,
+                behavior: 'smooth'
+            });
+
+            // Update active class for the navigation link
+            navLinks.forEach(link => link.classList.remove("active"));
+            this.classList.add("active");
+        });
+    });
 });
