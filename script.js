@@ -26,38 +26,4 @@ $(document).ready(function () {
             history.replaceState(null, null, window.location.pathname + window.location.search);
         }
     });
-
-    // Function to highlight the active section
-    function highlightActiveSection() {
-        var scrollPosition = $(window).scrollTop() + headerHeight + 10; // Adjust for offset
-        var windowHeight = $(window).height(); // Get viewport height
-
-        var currentSection = null;
-        var maxVisible = 0;
-
-        $('section').each(function () {
-            var sectionTop = $(this).offset().top;
-            var sectionBottom = sectionTop + $(this).outerHeight();
-
-            // Calculate how much of the section is visible in the viewport
-            var visibleHeight = Math.min(sectionBottom, scrollPosition + windowHeight) - Math.max(sectionTop, scrollPosition);
-            
-            // If at least 50% of the section is visible, consider it the active one
-            if (visibleHeight > maxVisible && visibleHeight > $(this).outerHeight() * 0.5) {
-                maxVisible = visibleHeight;
-                currentSection = $(this);
-            }
-        });
-
-        // Update nav links
-        if (currentSection) {
-            var sectionId = currentSection.attr('id');
-            $('nav ul li a').removeClass('active'); // Remove from all
-            $('nav ul li a[href="#' + sectionId + '"]').addClass('active'); // Add to current
-        }
-    }
-
-    // Call function on scroll
-    $(window).on('scroll', highlightActiveSection);
-    highlightActiveSection(); // Run on page load in case user refreshes mid-scroll
 });
