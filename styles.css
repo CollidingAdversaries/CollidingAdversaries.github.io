@@ -226,7 +226,8 @@ footer {
     .hamburger {
         display: flex; /* Now visible on mobile */
         position: fixed;
-        bottom: 20px;
+        bottom: 5vh;
+        right: 10vw;
         background: #333;
         color: white;
         width: 45px;
