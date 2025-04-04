@@ -13,6 +13,10 @@ html {
     scroll-behavior: smooth;
 }
 
+#abstract {
+    width: 85%;
+}
+
 /* Header (Desktop & Mobile) */
 header {
     background: #333;
