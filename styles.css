@@ -191,3 +191,80 @@ footer {
     justify-content: center; /* Center the text horizontally */
     height: 35vh; /* Adjust as needed */
 }
+
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+    /* Header adjustments */
+    header {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    /* Mobile Navigation */
+    nav ul {
+        display: none; /* Initially hide the menu on mobile */
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+        padding: 10px;
+        background-color: #333;
+        border-radius: 5px;
+    }
+
+    .menu-toggle .bar {
+        width: 25px;
+        height: 4px;
+        background-color: white;
+        margin: 4px 0;
+    }
+
+    /* Adjust sections */
+    section {
+        padding: 20px;
+    }
+
+    .subsection {
+        width: 95%; /* Ensure the subsections fill most of the screen */
+        margin: 10px auto;
+    }
+
+    .organizers-container {
+        display: block;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .organizer {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .organizer-img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+    }
+
+    footer {
+        padding: 20px;
+        height: auto;
+    }
+}
+
