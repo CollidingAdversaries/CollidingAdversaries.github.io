@@ -1,20 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll(".nav-link");
-
     const headerHeight = document.querySelector('header').offsetHeight;
 
-    // Function to calculate the center position of a section
-    function getSectionCenterPosition(section) {
-        const sectionTop = section.offsetTop; // Position of the section from the top of the document
-        const sectionHeight = section.offsetHeight; // Height of the section
-        const sectionCenter = sectionTop + (sectionHeight / 2); // Center position of the section
-
-        // Adjust by the header height to ensure it's not hidden under the header
-        return sectionCenter - (window.innerHeight / 2) + headerHeight;
-    }
-
-    // Smooth scroll behavior for navigation links
+    // Smooth scrolling behavior when clicking on the nav links
     navLinks.forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -22,22 +11,27 @@ document.addEventListener("DOMContentLoaded", () => {
             const targetId = this.getAttribute('href').substring(1); // Get the target section ID
             const targetElement = document.getElementById(targetId);
 
-            // Calculate the scroll position to center the section
-            const targetCenterPosition = getSectionCenterPosition(targetElement);
+            // Calculate the scroll position to ensure the section is centered
+            const sectionTop = targetElement.offsetTop; // Get the top position of the section
+            const sectionHeight = targetElement.offsetHeight; // Get the height of the section
+            const sectionCenter = sectionTop + (sectionHeight / 2); // Calculate the center of the section
 
-            // Smoothly scroll to the section's center position
+            // Adjust the scroll to center the section, accounting for the header height
+            const scrollToPosition = sectionCenter - (window.innerHeight / 2) + headerHeight;
+
+            // Smoothly scroll to the section's calculated position
             window.scrollTo({
-                top: targetCenterPosition,
+                top: scrollToPosition,
                 behavior: 'smooth'
             });
 
-            // Update the active link
+            // Remove 'active' class from all links and add it to the clicked one
             navLinks.forEach(link => link.classList.remove("active"));
             this.classList.add("active");
         });
     });
 
-    // Update active link on scroll
+    // Update active link based on the section currently in the viewport
     window.addEventListener("scroll", () => {
         let currentSection = "";
 
@@ -45,13 +39,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const sectionTop = section.offsetTop;
             const sectionBottom = sectionTop + section.offsetHeight;
 
-            // If the section is within the viewport, update the active link
+            // Check if the section is in the viewport (considering the header height)
             if (window.scrollY + headerHeight >= sectionTop && window.scrollY + headerHeight < sectionBottom) {
                 currentSection = section.getAttribute("id");
             }
         });
 
-        // Update the active class for navigation links
+        // Update the active navigation link
         navLinks.forEach(link => {
             link.classList.remove("active");
             if (link.getAttribute("href").includes(currentSection)) {
