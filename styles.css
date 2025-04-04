@@ -88,6 +88,30 @@ section h2 {
     margin-top: 0; /* Remove unnecessary space above the headline */
 }
 
+.subsection {
+    width: 80%; /* Set a fixed width (you can adjust this value) */
+    max-width: 1000px; /* Optional: maximum width if you don't want it too wide */
+    margin: 20px auto; /* Center the subsections horizontally with space between them */
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-left: 5px solid #ff9800;
+    box-sizing: border-box; /* Ensures padding does not affect width */
+}
+
+.subsection h3 {
+    color: #333;
+    margin-top: 0;
+}
+
+/* Optional: Adding spacing between sections */
+section {
+    padding: 50px 0;
+}
+
+section h2 {
+    text-align: center; /* Ensure the main header is centered */
+}
+
 /* Footer */
 footer {
     background: #333;
