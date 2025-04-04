@@ -3,9 +3,8 @@ $(document).ready(function () {
     var headerHeight = $header.outerHeight() || 0; // Ensure valid number
     console.log("Header Height: ", headerHeight);
 
-    // Prevent auto-jump by resetting scroll position on load
-    history.scrollRestoration = "manual";
-    window.scrollTo(0, 0);
+    // Disable built-in smooth scrolling from CSS (fixes double-scroll)
+    $('html').css('scroll-behavior', 'auto');
 
     $('a.scrollto').on('click', function (e) {
         e.preventDefault(); // Prevent default jump behavior
@@ -19,19 +18,20 @@ $(document).ready(function () {
             // Stop any ongoing scroll animation immediately
             $('html, body').stop(true, true);
 
-            // Delay for layout stabilization
+            // Delay ensures layout calculations are stable
             setTimeout(function () {
                 var scrollto = $target.offset().top - headerHeight;
                 console.log("Scroll To: ", scrollto);
 
-                // Remove hash from URL (prevents browser jump)
-                history.pushState(null, null, ' ');
-
-                // Perform smooth scrolling
+                // Perform smooth scrolling using jQuery
                 $('html, body').animate({
                     scrollTop: scrollto
-                }, 600, 'easeInOutCubic'); // 'easeInOutCubic' gives smoother effect
-            }, 10); // Small delay ensures layout is stable
+                }, 600, 'easeInOutCubic'); 
+
+                // Replace hash without affecting scroll position
+                history.replaceState(null, null, window.location.pathname + window.location.search);
+
+            }, 10); // Small delay to allow for rendering
         } else {
             console.log("Target element not found: ", target);
         }
