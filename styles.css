@@ -21,6 +21,7 @@ header {
     z-index: 1000;
 }
 
+/* Navigation Styling */
 nav ul {
     list-style: none;
     padding: 0;
@@ -57,18 +58,18 @@ nav ul li a:hover {
     color: #ff9800; /* Matches the underline color */
 }
 
-/* Sections */
+/* Main Content Section Styling */
 main {
-    padding-top: 80px; /* Space for fixed header */
+    padding-top: 20px; /* Reduced padding above the sections */
 }
 
 section {
-    height: auto; /* No full viewport height */
+    height: 100vh; /* Keep full viewport height */
     padding-top: 20px; /* Reduced top padding */
-    padding: 20px;
+    padding: 50px;
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
     background: white;
     margin-bottom: 10px;
