@@ -203,6 +203,60 @@ footer {
     height: 35vh;
 }
 
+/* Mobile Navigation (Initially Hidden) */
+.mobile-nav {
+    display: none; /* Hide by default */
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    background: #333;
+    color: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+    z-index: 1000;
+}
+
+.mobile-nav.active {
+    display: block; /* Show when active */
+}
+
+.mobile-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.mobile-nav ul li {
+    margin: 20px 0;
+}
+
+.mobile-nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Hamburger Button */
+.hamburger {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #ff9800;
+    color: white;
+    padding: 10px 15px;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
+    border-radius: 5px;
+}
+
+.hamburger:hover {
+    background: #f57c00;
+}
+
 /* Hamburger Menu (Hidden by Default) */
 .hamburger {
     display: none; /* Hide by default */
