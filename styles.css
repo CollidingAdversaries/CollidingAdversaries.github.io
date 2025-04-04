@@ -63,11 +63,12 @@ main {
 }
 
 section {
-    height: 100vh; /* Full viewport height */
-    padding: 50px;
+    height: auto; /* No full viewport height */
+    padding-top: 20px; /* Reduced top padding */
+    padding: 20px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
     flex-direction: column;
     background: white;
     margin-bottom: 10px;
@@ -76,6 +77,11 @@ section {
 
 section:nth-child(even) {
     background: #ddd;
+}
+
+/* Headings in Sections */
+section h2 {
+    margin-top: 0; /* Remove unnecessary space above the headline */
 }
 
 /* Footer */
