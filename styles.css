@@ -205,27 +205,27 @@ footer {
 
 /* Mobile Navigation (Initially Hidden) */
 .mobile-nav {
-    display: none; /* Hide by default */
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 250px;
-    height: 100%;
-    background: #333;
-    color: white;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    text-align: center;
-    z-index: 1000;
-}
-
-.mobile-nav.active {
-    display: block; /* Show when active */
+    display: none; /* Hidden by default */
+    position: absolute;
+    bottom: 50px;  /* Position it above the hamburger button */
+    right: 20px;
+    width: 200px;  /* Set the width of the mobile menu */
+    background-color: #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 10px;
+    z-index: 9999;
 }
 
 .mobile-nav ul {
     list-style: none;
     padding: 0;
+    margin: 0;
+}
+
+.mobile-nav ul li {
+    text-align: center;
+    margin: 10px 0;
 }
 
 .mobile-nav ul li {
@@ -235,7 +235,19 @@ footer {
 .mobile-nav ul li a {
     color: white;
     text-decoration: none;
-    font-size: 18px;
+    display: block;
+    padding: 8px 0;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.mobile-nav ul li a:hover {
+    color: #ff9800;
+}
+
+/* Show the mobile navigation when active */
+.mobile-nav.active {
+    display: block;  /* Show the mobile menu */
 }
 
 /* Hamburger Button */
@@ -325,5 +337,16 @@ footer {
 
     .mobile-nav a:hover {
         color: #ff9800;
+    }
+}
+
+
+/* Optional: Close mobile navigation on larger screens */
+@media (min-width: 768px) {
+    .mobile-nav {
+        display: none; /* Hide mobile nav on larger screens */
+    }
+    #mobile-menu {
+        display: none; /* Hide hamburger on larger screens */
     }
 }
