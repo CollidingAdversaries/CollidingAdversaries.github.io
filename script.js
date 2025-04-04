@@ -1,23 +1,27 @@
 $(document).ready(function () {
     var $header = $('#header');
-    var headerHeight = $header.outerHeight(); // Get the header height
+    var headerHeight = $header.outerHeight() || 0; // Ensure we always get a valid number
     console.log("Header Height: ", headerHeight);
 
     // Smooth scrolling for navigation menu links
     $('a.scrollto').on('click', function (e) {
-        e.preventDefault(); // Prevent the default jump-to-anchor behavior
+        e.preventDefault(); // Stop default jump behavior
 
         var target = this.hash;
         console.log("Hash Target: ", target);
 
         if ($(target).length) {
-            var scrollto = $(target).offset().top - headerHeight; // Adjust for fixed header
+            var $target = $(target);
+            var scrollto = $target.offset().top - headerHeight; // Adjust for fixed header
             console.log("Scroll To: ", scrollto);
 
-            // Smooth scroll to the target position
-            $('html, body').stop().animate({
+            // Remove hash from URL (prevents browser's default anchor jump)
+            history.pushState(null, null, ' ');
+
+            // Stop ongoing animations & perform smooth scroll
+            $('html, body').stop(true, false).animate({
                 scrollTop: scrollto
-            }, 800, 'easeInOutExpo'); // Reduced animation time to make it snappier
+            }, 800, 'easeInOutExpo');
         } else {
             console.log("Target element not found: ", target);
         }
