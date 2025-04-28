@@ -325,3 +325,14 @@ footer {
         display: none; /* Hide hamburger on larger screens */
     }
 }
+
+.about-logo {
+    max-width: 40%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .about-logo {
+        max-width: 80%;
+    }
+}
